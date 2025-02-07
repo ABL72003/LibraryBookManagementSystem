@@ -5,14 +5,14 @@ public class Book {
 	private String title;
 	private String author;
 	private String ISBN;
-	private Double price;
+	private double price;
 
 	
 	public Book() {
-		title = "unknown";
-		author = "unknown";
-		ISBN = "unknown";
-		price = 0.0;
+		this.title = "unknown";
+		this.author = "unknown";
+		this.ISBN = "unknown";
+		this.price = 0.0;
 	}
 /**
  * 
