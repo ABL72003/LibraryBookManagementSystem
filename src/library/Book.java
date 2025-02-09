@@ -17,8 +17,45 @@ public class Book {
 		this.ISBN = "unknown";
 		this.price = 0.0;
 	}
+	
+	
+	/**
+	 * Constructor that takes the fields of the book in and sets the values of the book
+	 * returns a boolean value upon completion. 
+	 * I also check if a null or negative number is passed A message will play and the constructor will not assign.
+	 * @param title
+	 * @param author
+	 * @param iSBN
+	 * @param price
+	 * 
+	 */
+	public Book(String title,String author,String iSBN,double price) {
+		
+		if(title == null || author == null || iSBN == null || price < 0 ) {
+			
+			throw new IllegalArgumentException ("invalid book parameters");
+		}
+		
+		this.author = author;
+		this.title = title;
+		this.ISBN = iSBN;
+		this.price = price;
+			
+	}
+	
+	/**This is the copy setter that creates a new book as a copy of another book.
+	 * 
+	 * @param Book
+	 */
+	public Book(Book original) {
+		this.title = original.title;
+		this.author = original.author;
+		this.ISBN = original.ISBN;
+		this.price = original.price;
+		
+	}
 /**
- * This is a getter function that just returns thee title of a book.
+ * This is a getter function that just returns the title of a book.
  * @return
  */
 	public String getTitle() {
