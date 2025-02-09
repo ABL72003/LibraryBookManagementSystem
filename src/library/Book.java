@@ -29,23 +29,23 @@ public class Book {
 	 * @param price
 	 * 
 	 */
-	public Book(String title,String author,String iSBN,double price) {
+	public Book(String title,String author,String ISBN,double price) {
 		
-		if(title == null || author == null || iSBN == null || price < 0 ) {
+		if(title == null || author == null || ISBN == null || price < 0 ) {
 			
 			throw new IllegalArgumentException ("invalid book parameters");
 		}
 		
 		this.author = author;
 		this.title = title;
-		this.ISBN = iSBN;
+		this.ISBN = ISBN;
 		this.price = price;
 			
 	}
 	
 	/**This is the copy setter that creates a new book as a copy of another book.
 	 * 
-	 * @param Book
+	 * @param the books contents you want to use to make a copy
 	 */
 	public Book(Book original) {
 		this.title = original.title;
@@ -56,7 +56,7 @@ public class Book {
 	}
 /**
  * This is a getter function that just returns the title of a book.
- * @return
+ * @return the title
  */
 	public String getTitle() {
 		return title;
@@ -70,7 +70,7 @@ public class Book {
 	}
 	/**
 	 * This is a getter function that returns the author and takes no parameters.
-	 * @return
+	 * @return the author
 	 */
 	public String getAuthor() {
 		return author;
@@ -84,21 +84,21 @@ public class Book {
 	}
 	/**
 	 * This is a getter function that takes nothing but returns the ISBN string.
-	 * @return
+	 * @return the ISBN number
 	 */
 	public String getISBN() {
 		return ISBN;
 	}
 	/**
 	 * This is a setter function that takes a ISBN string and sets the book's ISBN.
-	 * @param iSBN
+	 * @param ISBN
 	 */
-	public void setISBN(String iSBN) {
-		this.ISBN = iSBN;
+	public void setISBN(String ISBN) {
+		this.ISBN = ISBN;
 	}
 	/**
 	 * THis is a getter function that takes nothing but returns the price of a book. 
-	 * @return
+	 * @return the price
 	 */
 	public double getPrice() {
 		return price;
