@@ -23,6 +23,7 @@ public class Library {
 		if(books[numOfBooks] == null) {
 			books[numOfBooks] = book;
 			numOfBooks++;
+			System.out.println("Book added successfully!\n");
 			return true;
 		}
 		
@@ -30,11 +31,11 @@ public class Library {
 			if(books[i] == null) {
 				books[i] = book;
 				numOfBooks++;
+				System.out.println("Book added successfully!\n");
 				return true;
 			}
 		}
-		
-		return true;
+		return true; 
 	}
 	
 	/** 
@@ -93,13 +94,23 @@ public class Library {
 	 * Prints details of all books
 	 */
 	public void displayBooks() {
-		for(int i = 0; i < totalBooks; i++) {
+		int i = 0;
+		int j = i;
+		System.out.println("All books in the library:\n");
+		for(i = 0; i < totalBooks; i++) {
+			j++;
+			if(books[i] == null) {
+				j--;
+				continue;
+			}
 			if(books[i] != null) {
-				System.out.println((i + 1) + ". " +  books[i].getTitle().toString() + " by " + 
+				
+				System.out.println(j + ". " +  books[i].getTitle().toString() + " by " + 
 											   books[i].getAuthor().toString() + " (ISBN: " +  books[i].getISBN().toString()
 											   + ", $" + books[i].getPrice() + ")");
 				
 			}
+			
 		}
 	}
 	
