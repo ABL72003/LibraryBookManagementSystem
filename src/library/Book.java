@@ -111,4 +111,22 @@ public class Book {
 		this.price = price;
 	}
 	
+
+	/**
+	 * Override that checks if the object is either null or the right class 
+	 * then evaluated the ISBN using casting for the Object. true if they are equal.
+	 */
+	@Override
+	public boolean equals(Object other) {
+		if (other == null || this.getClass() != other.getClass()) return false;
+		return this.ISBN.equals(((Book) other).ISBN);
+	}
+	
+	/**
+	 * turns the book into a returnable string 
+	 */
+    @Override
+    public String toString() {
+        return title + " by " + author + " (ISBN: " + ISBN + ", $" + price + ")";
+    }
 }
