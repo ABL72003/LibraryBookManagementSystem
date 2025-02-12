@@ -12,7 +12,7 @@ public class Library {
 	 */
 	public boolean addBook(Book book) {
 		if (numOfBooks == totalBooks || numOfBooks < 0) {
-			System.out.println("The Library is full! You can't add anymore books.");
+			System.out.println("The Library is full! You can't add anymore books to the Library!"); 
 			return false;
 		}	
 		
@@ -42,7 +42,7 @@ public class Library {
 			System.out.println("There are no books in the library right now. You can't remove any books!");
 			return false;
 		}
-		for(int i = 0; i < numOfBooks; i++) {
+		for(int i = 0; i < totalBooks; i++) {
 			if(this.books[i].equals(book)) {
 				books[i] = null;
 				numOfBooks--;
@@ -50,6 +50,35 @@ public class Library {
 			}
 		}
 		return false;
+	}
+	
+	/** Searches for book by ISBN and returns the Book object (or null if not found)
+	 * 
+	 * @param ISBN
+	 * @return
+	 */
+	public Book searchByISBN(String ISBN) {
+		for(int i = 0; i < totalBooks; i++) {
+			if(this.books[i].getISBN().equals(ISBN)) {
+				return books[i];
+			}
+		}
+		System.out.println("This book is not in the library!");
+		return null;
+	}
+	
+	/**
+	 * Prints details of all books
+	 */
+	public void displayBooks() {
+		for(int i = 0; i < totalBooks; i++) {
+			if(books[i] != null) {
+				System.out.println((i + 1) + ". " +  books[i].getTitle().toString() + " by " + 
+											   books[i].getAuthor().toString() + " (ISBN: " +  books[i].getISBN().toString()
+											   + ", $" + books[i].getPrice() + ")");
+				
+			}
+		}
 	}
 	
 }
