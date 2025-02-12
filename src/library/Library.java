@@ -7,18 +7,32 @@ public class Library {
 	
 	
 	/**
-	 *  This method will add a book to the Library object
+	 *  This method will add a book to the Library object unless the Library is full or the book has already been added
 	 *  @param book
 	 */
 	public boolean addBook(Book book) {
+		int i;
 		if (numOfBooks == totalBooks || numOfBooks < 0) {
 			System.out.println("The Library is full! You can't add " + book.getTitle().toString() + " by " + 
 					   book.getAuthor().toString() + " (ISBN: " +  book.getISBN().toString()
 					   + ", $" + book.getPrice() + ")\n");
 
- 
 			return false;
 		}	
+		
+		for(i = 0; i < totalBooks; i++) {
+			if (books[i] == null) {
+				continue;
+			}
+			if(books[i].getISBN().equals(book.getISBN()) && books[i].getTitle().equals(book.getTitle()) && 
+															books[i].getAuthor().equals(book.getAuthor()) &&
+															books[i].getPrice() == (book.getPrice())) {
+				System.out.println("You can't add " + book.getTitle().toString() + " by " + 
+						   book.getAuthor().toString() + " (ISBN: " +  book.getISBN().toString()
+						   + ", $" + book.getPrice() + ")\nThis book is already in the library\n");
+				return false;
+			}
+		}
 		
 		if(books[numOfBooks] == null) {
 			books[numOfBooks] = book;
@@ -27,7 +41,7 @@ public class Library {
 			return true;
 		}
 		
-		for(int i = 0; i < numOfBooks; i++) {
+		for (i = 0; i < numOfBooks; i++) {
 			if(books[i] == null) {
 				books[i] = book;
 				numOfBooks++;
@@ -39,7 +53,7 @@ public class Library {
 	}
 	
 	/** 
-	 * This method will remove a book from the Library object
+	 * This method will remove a book from the Library object if the book is in the Library object.
 	 * @param book
 	 */
 	public boolean removeBook(Book book) {
@@ -66,7 +80,7 @@ public class Library {
 		return false;
 	}
 	
-	/** Searches for book by ISBN and returns the Book object (or null if not found)
+	/** Searches for a book by ISBN and returns the Book object (or null if not found)
 	 * 
 	 * @param ISBN
 	 * @return
@@ -91,24 +105,25 @@ public class Library {
 	}
 	
 	/**
-	 * Prints details of all books
+	 * Prints details of all books currently in the library in a list format
 	 */
 	public void displayBooks() {
 		int i = 0;
 		int j = i;
 		System.out.println("All books in the library:\n");
+		
 		for(i = 0; i < totalBooks; i++) {
 			j++;
+			
 			if(books[i] == null) {
 				j--;
 				continue;
 			}
+			
 			if(books[i] != null) {
-				
 				System.out.println(j + ". " +  books[i].getTitle().toString() + " by " + 
 											   books[i].getAuthor().toString() + " (ISBN: " +  books[i].getISBN().toString()
 											   + ", $" + books[i].getPrice() + ")");
-				
 			}
 			
 		}
