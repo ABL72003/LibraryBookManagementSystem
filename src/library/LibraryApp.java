@@ -23,14 +23,12 @@ public class LibraryApp {
 			newLibrary.addBook(book1);
 			newLibrary.addBook(book2);
 			newLibrary.addBook(book3);
+			System.out.println();
 			/**
-			 * print message stating success
-			 */
-			System.out.println("books added successfully!");
-			/**
+			
 			 * creating a string to search for and utilizing the searchbyISBN function to find if it exists
 			 */
-			String search = "943-9481037189";
+			String search = "843-9481037189";
 			System.out.println("searching books with ISBN: " + search);
 			Book found = newLibrary.searchByISBN(search);
 			
@@ -48,6 +46,22 @@ public class LibraryApp {
 	        
 	        newLibrary.displayBooks();
 	        newLibrary.removeBook(book2);
+	        
+	        //checking after removal
+	        System.out.println("\nAll books in the library after removal:");
+	        newLibrary.displayBooks();
+	        System.out.println();
+	        
+	        System.out.println("Attempting to remove a book that is not in the library...");
+	        
+	        Book fakebook = new Book("Fake Book", "Fake Author", "111-1111111111", 0.0);
+	        
+	        boolean i = newLibrary.removeBook(fakebook);
+	      
+	        if(!i) {
+	        	System.out.println("Cannot remove book: " + fakebook);
+	        }
+	        System.out.println();
 	        
 	        
 

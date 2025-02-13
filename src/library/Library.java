@@ -62,7 +62,7 @@ public class Library {
 			return false;
 		}
 		for(int i = 0; i < totalBooks; i++) {
-			if(this.books[i].equals(book)) {
+			if(this.books[i] != null && this.books[i].equals(book)) {
 				books[i] = null;
 				numOfBooks--;
 				
